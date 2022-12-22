@@ -40,6 +40,7 @@ const ItemDisplay: NextPage = () => {
   }, [resource, category, flavor, searchQuery, count]);
 
   const inputref = useRef<HTMLInputElement>();
+  
   //ページング
   useEffect(() => {
     if (category) {
