@@ -21,7 +21,7 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const ItemDisplay: NextPage = () => {
   const [resource, setResource] = useState(
-    `/api/items`
+    `${process.env.NEXT_PUBLIC_PROTEIN}/api/items`
   );
   const [count, setCount] = useState(1);
   const [category, setCategory] = useState('');
