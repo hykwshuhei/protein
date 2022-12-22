@@ -8,7 +8,7 @@ export default async function Handler(req:IncomingMessage & {
 },res:any) {
   const cookies = req.cookies;
   const r = await fetch(
-    `http://localhost:8000/carts?userId=${cookies.id}`
+    `${process.env.NEXT_PUBLIC_PROTEIN_DATA}/carts?userId=${cookies.id}`
   );
   const carts = await r.json();
 
