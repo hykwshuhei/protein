@@ -3,7 +3,7 @@ import styles from '/styles/users.edit.module.css';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import { Users, Users2, Users3, User, Item } from '../types/type';
+import {  Users2, Users3 } from '../types/type';
 
 // export const getServerSideProps: GetServerSideProps = async ({
 //   req,
@@ -19,14 +19,10 @@ import { Users, Users2, Users3, User, Item } from '../types/type';
 //   };
 // };
 
-const EmailEdit = ({
-  formValues,
-  setFormValues,
-  readOnly,
-}: {
-  formValues: Users2;
-  setFormValues: Users3;
-  readOnly: boolean;
+const EmailEdit = ({ formValues, setFormValues, readOnly }: {
+  formValues:Users2;
+  setFormValues:Users3;
+  readOnly:boolean;
 }) => {
   const router = useRouter();
 

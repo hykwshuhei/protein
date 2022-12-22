@@ -17,12 +17,11 @@ import { Users, Users2, Users3, User, Item } from '../../types/type';
 import TooltipButton from '../../components/tooltipButton';
 import Footer from '../layout/footer';
 
-const fetcher = (resource: any, init: any) =>
-  fetch(resource, init).then((res) => res.json());
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const ItemDisplay: NextPage = () => {
   const [resource, setResource] = useState(
-    `${process.env.NEXT_PUBLIC_PROTEIN}/api/items`
+    `/api/items`
   );
   const [count, setCount] = useState(1);
   const [category, setCategory] = useState('');
@@ -45,14 +44,14 @@ const ItemDisplay: NextPage = () => {
   useEffect(() => {
     if (category) {
       setResource(
-        `${process.env.NEXT_PUBLIC_PROTEIN}/api/items?flavor_like=${flavor}&category=${category}`
+        `/api/items?flavor_like=${flavor}&category=${category}`
       );
     } else if (flavor) {
       setResource(
-        `${process.env.NEXT_PUBLIC_PROTEIN}/api/items?flavor_like=${flavor}`
+        `/api/items?flavor_like=${flavor}`
       );
     } else {
-      setResource(`${process.env.NEXT_PUBLIC_PROTEIN}/api/items`);
+      setResource(`/api/items`);
     }
   }, [flavor, category]);
 

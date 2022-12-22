@@ -3,6 +3,7 @@ import styles from '/styles/users.edit.module.css';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
+import{ User,Users2,Users3 } from '../types/type';
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,
@@ -18,7 +19,11 @@ export const getServerSideProps: GetServerSideProps = async ({
   };
 };
 
-const TelEdit = ({ formValues, setFormValues, readOnly }: any) => {
+const TelEdit = ({ formValues, setFormValues, readOnly }: {
+  formValues:Users2;
+  setFormValues:Users3;
+  readOnly:boolean;
+}) => {
   const router = useRouter();
 
   // const initialValues = {
@@ -29,7 +34,7 @@ const TelEdit = ({ formValues, setFormValues, readOnly }: any) => {
   // const [formErrors, setFormErrors] = useState(initialValues);
   const [isSubmit, setIsSubmit] = useState(false);
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
@@ -54,8 +59,8 @@ const TelEdit = ({ formValues, setFormValues, readOnly }: any) => {
   //   }
   // };
 
-  const validate = (values: any) => {
-    const errors = {} as any;
+  const validate = (values: User) => {
+    const errors = {} as User;
     const telReg =
       /^(0[5-9]0-[0-9]{4}-[0-9]{4}|0[0-9]{3}-[0-9]{2}-[0-9]{4})$/;
     if (!telReg.test(values.tel)) {

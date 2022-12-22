@@ -23,7 +23,11 @@ const PasswordEdit = ({
   formValues,
   setFormValues,
   readOnly,
-}: any) => {
+}:{
+  formValues:Users2;
+  setFormValues:Users3;
+  readOnly:boolean;
+}) => {
   const router = useRouter();
 
   // const initialValues = {
@@ -35,7 +39,7 @@ const PasswordEdit = ({
   // const [formErrors, setFormErrors] = useState(initialValues);
   const [isSubmit, setIsSubmit] = useState(false);
 
-  const handleChange = (e: any) => {
+  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
@@ -60,8 +64,8 @@ const PasswordEdit = ({
   //   }
   // };
 
-  const validate = (values: any) => {
-    const errors = {} as any;
+  const validate = (values: Users) => {
+    const errors = {} as Users;
 
     const passwordReg = /^[0-9a-zA-Z]*$/;
 
