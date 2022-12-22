@@ -74,7 +74,7 @@ const nextConfig = {
       },
       {
         source: '/',
-        destination: `${dataUrl}/items/`,
+        destination: '/items/',
       },
       // {
       //   source: 'PROTEIN',
