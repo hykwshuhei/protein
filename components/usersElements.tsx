@@ -25,7 +25,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   };
 };
 
-export default function UsersElements({ user }: any) {
+export default function UsersElements({ user }: {user:Users}) {
   const [readOnly, setReadOnly] = useState(true);
   const clickHandler = (e: SyntheticEvent) => {
     setReadOnly((prev) => !prev);
@@ -44,18 +44,31 @@ export default function UsersElements({ user }: any) {
     email: user.email,
     middleName: user.middleName,
     tel: user.tel,
-    credit: user.credit,
     password: user.password,
     passwordConfirmation: user.passwordConfirmation,
   };
 
+  const initialValues2 = {
+    tel: '',
+    password: '',
+    passwordConfirmation: '',
+  };
   const [formValues, setFormValues] = useState(initialValues);
-  // const [formErrors, setFormErrors] = useState(initialValues);
+  const [formErrors, setFormErrors] = useState(initialValues2);
+  const [isSubmit, setIsSubmit] = useState(false);
+
 
   function submit(e: SyntheticEvent) {
     e.preventDefault();
 
-    fetch(`${process.env.NEXT_PUBLIC_PROTEIN}/api/users/${user.id}`, {
+    const newErrors = validate(formValues);
+    setFormErrors(newErrors);
+    setIsSubmit(true);
+
+    if (Object.keys(newErrors).length !== 0) {
+      return isSubmit;
+    } else {
+    fetch(`/api/users/${user.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -65,6 +78,37 @@ export default function UsersElements({ user }: any) {
       router.reload();
     });
   }
+  }
+
+  const validate = (formValues: Users2) => {
+    const errors = {} as Users;
+
+    const passwordReg = /^[0-9a-zA-Z]*$/;
+    const telReg =
+      /^(0[5-9]0-[0-9]{4}-[0-9]{4}|0[0-9]{3}-[0-9]{2}-[0-9]{4})$/;
+
+    if (formValues.password.length < 8) {
+      errors.password =
+        'パスワードは８文字以上１６文字以内で設定してください';
+    } else if (formValues.password.length > 16) {
+      errors.password =
+        'パスワードは８文字以上１６文字以内で設定してください';
+    } else if (!passwordReg.test(formValues.password)) {
+      errors.password = 'パスワードは半角英数字で記載してください';
+    } else if (formValues.password !== formValues.passwordConfirmation) {
+      errors.passwordConfirmation =
+        'パスワードと確認用パスワードが不一致です';
+    } else if (!passwordReg.test(formValues.passwordConfirmation)) {
+      errors.passwordConfirmation =
+        '確認用パスワードは半角英数字で記載してください';
+    }
+
+    if (!telReg.test(formValues.tel)) {
+      errors.tel =
+        '電話番号はXXX-XXXX-XXXXかXXXX-XX-XXXXの形式で入力してください';
+    }
+    return errors;
+  };
 
   return (
     <>
@@ -81,6 +125,7 @@ export default function UsersElements({ user }: any) {
             readOnly={readOnly}
           />
         </div>
+        {/* <div>{formErrors?.email}</div> */}
         <hr />
 
         <div className={styles.elementCategory}>
@@ -135,7 +180,9 @@ export default function UsersElements({ user }: any) {
             setFormValues={setFormValues}
             readOnly={readOnly}
           />
+          <div>{formErrors?.tel}</div>
         </div>
+        {/* <div>{formErrors?.tel}</div> */}
         <hr />
         {/* <div className={styles.elementCategory}>
           <div>
@@ -164,10 +211,14 @@ export default function UsersElements({ user }: any) {
           </div>
           <PasswordEdit
             formValues={formValues}
-            setFormvalues={setFormValues}
+            setFormValues={setFormValues}
             readOnly={readOnly}
           />
         </div>
+        <div>
+          {formErrors?.passwordConfirmation}
+          </div>
+
         <hr />
 
         <button className={styles.btnB}>

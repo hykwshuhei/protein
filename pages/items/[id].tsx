@@ -9,7 +9,7 @@ import {
 import React, { useEffect } from 'react';
 import Header from '../layout/header';
 import { useRouter } from 'next/router';
-import { Item } from '../../types/type';
+import { Item,Event } from '../../types/type';
 import Footer from '../layout/footer';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -172,7 +172,7 @@ const ItemDetail: NextPage<{ detail: Item }> = ({ detail }) => {
       return;
     } else {
       fetch(
-        `${process.env.NEXT_PUBLIC_PROTEIN}/api/subscriptionCart/`,
+        `/api/subscriptionCart/`,
         {
           method: 'POST',
           headers: {

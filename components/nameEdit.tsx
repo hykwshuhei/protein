@@ -3,6 +3,7 @@ import styles from '/styles/users.edit.module.css';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
+import{ Users2,Users3 } from '../types/type';
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,
@@ -18,7 +19,11 @@ export const getServerSideProps: GetServerSideProps = async ({
   };
 };
 
-const NameEdit = ({ formValues, setFormValues, readOnly }: any) => {
+const NameEdit = ({ formValues, setFormValues, readOnly }:{
+  formValues:Users2;
+  setFormValues:Users3;
+  readOnly:boolean;
+}) => {
   const router = useRouter();
 
   // const initialValues = {
@@ -30,7 +35,7 @@ const NameEdit = ({ formValues, setFormValues, readOnly }: any) => {
 
   // const [formValues, setFormValues] = useState(initialValues);
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
