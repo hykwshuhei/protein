@@ -5,14 +5,14 @@ const nextConfig = {
   rewrites: async () => {
     const dataUrl = process.env.NEXT_PUBLIC_PROTEIN_DATA
     return [
-      {
-        source: '/api/items',
-        destination: `${dataUrl}/items`,
-      },
-      {
-        source: '/api/items/:slug',
-        destination: `${dataUrl}/items/:slug`,
-      },
+      // {
+      //   source: '/api/items',
+      //   destination: `${dataUrl}/items`,
+      // },
+      // {
+      //   source: '/api/items/:slug',
+      //   destination: `${dataUrl}/items/:slug`,
+      // },
 
       {
         source: '/api/users',

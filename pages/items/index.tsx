@@ -39,7 +39,30 @@ const ItemDisplay: NextPage = () => {
   }, [resource, category, flavor, searchQuery, count]);
 
   const inputref = useRef<HTMLInputElement>();
+
+
+  //ポストする
+  // useEffect(() => {
+  //   const handler = async () => {
+  //     fetch(`/api/items`, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(resource),
+  //     })
+  //       .then((data) => {
+  //         console.log(data);
+  //       })
+  //       .catch((error) => {
+  //         console.error(error);
+  //       });
+  //   };
+
+  //   handler();
+  // }, [resource])
   
+
   //ページング
   useEffect(() => {
     if (category) {
