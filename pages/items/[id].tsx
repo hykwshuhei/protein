@@ -11,6 +11,8 @@ import Header from '../layout/header';
 import { useRouter } from 'next/router';
 import { Item,Event } from '../../types/type';
 import Footer from '../layout/footer';
+import supabase from "../../utils/supabase"; // supabaseをコンポーネントで使うときはかく
+
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch(
@@ -128,20 +130,22 @@ const ItemDetail: NextPage<{ detail: Item }> = ({ detail }) => {
   }, [count]);
   // localstrageへ保存【終わり】
 
-  const handler = () => {
+  const handler = async () => {
     // 数量0の場合はカートへ入れない
     if (count === 0) {
       return;
     } else if (userId === '') {
       router.push('/cart');
     } else {
-      fetch(`${process.env.NEXT_PUBLIC_PROTEIN_DATA}/carts`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(carts),
-      }).then(() => {
+      await supabase.from("carts").insert({ carts }); // 入れたい("テーブル名")と({カラム名})
+      // fetch(`${process.env.NEXT_PUBLIC_PROTEIN_DATA}/carts`, {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(carts),
+      // })
+      () => {
         // if (document.cookie !== '')
         {
           router.push('/cart');
@@ -150,7 +154,7 @@ const ItemDetail: NextPage<{ detail: Item }> = ({ detail }) => {
           //   router.push('/');
           //
         }
-      });
+      };
     }
   };
 
@@ -169,10 +173,13 @@ const ItemDetail: NextPage<{ detail: Item }> = ({ detail }) => {
       return;
       // 数量0の場合はカートへ入れない
     } else if (Number(userId) == 0) {
-      return;
+        alert(
+          'ログイン後に商品購入可能です（会員登録してない方は会員登録をお願いします）'
+        );
+        router.push('/login');
     } else {
       fetch(
-        `/api/subscriptionCart/`,
+        `${process.env.NEXT_PUBLIC_PROTEIN}/api/subscriptionCart/`,
         {
           method: 'POST',
           headers: {

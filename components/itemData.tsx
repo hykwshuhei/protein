@@ -5,7 +5,7 @@ import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-import { Users,Users2,Users3,User,Item } from '../types/type';
+import { Users, Users2, Users3, User, Item } from '../types/type';
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
@@ -46,7 +46,9 @@ const ItemData: React.FunctionComponent<{
 
   // カート内の商品を消去[始まり]
   // fetch(`/api/carts/${cartItem.id})
-  const deleteCarts = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const deleteCarts = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
     // const data = { deleted: true };
     event.preventDefault();
     const data = {};
@@ -189,7 +191,7 @@ const ItemData: React.FunctionComponent<{
               クレジット決済
             </button>
           </form>
-          <button className={styles.btnB} onClick={() => handler}>
+          <button className={styles.btnB} onClick={handler}>
             <span>代引き決済</span>
           </button>
         </section>
