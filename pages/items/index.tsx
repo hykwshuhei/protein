@@ -40,7 +40,8 @@ const ItemDisplay: NextPage = () => {
 
   const inputref = useRef<HTMLInputElement>();
   
-  //ポストする
+
+  //ページング
   useEffect(() => {
     if (category) {
       setResource(
