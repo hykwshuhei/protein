@@ -48,6 +48,7 @@ const ItemDisplay: NextPage = () => {
 
   const inputref = useRef<HTMLInputElement>();
 
+
   //ポストする
   useEffect(() => {
     if (category) {
