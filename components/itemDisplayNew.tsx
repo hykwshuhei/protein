@@ -3,6 +3,7 @@ import styles from '../styles/items_index.module.css';
 import Image from 'next/image';
 import { useState } from 'react';
 import { Users, Users2, Users3, User, Item } from '../types/type';
+import React from 'react';
 
 // const fetcher = (resource: any, init: any) =>
 //   fetch(resource, init).then((res) => res.json());
@@ -17,7 +18,6 @@ export default function ItemDisplayNew({
   // const { data, error } = useSWR('/api/items', fetcher);
   // if (error) return <div>Failed to Load</div>;
   // if (!data) return <div>Loading...</div>;
-  console.log(data);
   return (
     <>
       <div className={styles.side}>

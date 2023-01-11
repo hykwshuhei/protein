@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 import ItemDisplay from '../pages/items';
 import { Users,Users2,Users3,User,Item } from './../types/type';
+import React from 'react';
 
 // const fetcher = (resource: any, init: any) =>
 //   fetch(resource, init).then((res) => res.json());
@@ -45,7 +46,6 @@ export default function Searching({ handleSearch, inputref }: {handleSearch:any,
   //     .then((data) => setItems(data));
   // }, []);
 
-  // console.log(items);
   return (
     <>
       <form method="get" action="#" className={styles.search_box}>
