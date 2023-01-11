@@ -78,6 +78,7 @@ const ItemDisplay: NextPage = (data3:any) => {
   // if (error) return <div>Failed to Load</div>;
   // if (!data) return <div>Loading...</div>;
 
+
   // 種類検索イベント
   const categoryHandler = (e: ChangeEvent<HTMLSelectElement>) => {
     setCategory(e.target.value);
