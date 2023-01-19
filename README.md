@@ -12,6 +12,7 @@ yarn
 ```
 
 - インストールするライブラリ
+```
 "@hookform/error-message": "^2.0.1",
 "@reduxjs/toolkit": "^1.9.1",
 "@stripe/stripe-js": "^1.45.0",
@@ -37,6 +38,7 @@ yarn
 "styled-components": "^5.3.6",
 "swr": "^1.3.0",
 "typescript": "4.9.3"
+```
 
 - サーバー起動
 ```
