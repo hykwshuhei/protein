@@ -12,14 +12,31 @@ yarn
 ```
 
 - インストールするライブラリ
-"@fortawesome/fontawesome-svg-core": "^6.2.1",
-"@fortawesome/free-regular-svg-icons": "^6.2.1",
-"@fortawesome/free-solid-svg-icons": "^6.2.1",
-"@fortawesome/react-fontawesome": "^0.2.0",
-"@react-spring/web": "^9.6.0",
-"@splidejs/react-splide": "^0.7.12",
-"@supabase/supabase-js": "^2.2.0",
-"@types/formidable": "^2.0.5",
+"@hookform/error-message": "^2.0.1",
+"@reduxjs/toolkit": "^1.9.1",
+"@stripe/stripe-js": "^1.45.0",
+"@supabase/supabase-js": "^2.2.2",
+"@types/node": "18.11.9",
+"@types/react": "18.0.25",
+"@types/react-dom": "18.0.9",
+"dotenv": "^16.0.3",
+"eslint": "8.28.0",
+"eslint-config-next": "13.0.4",
+"next": "^13.0.6",
+"pg": "^8.8.0",
+"randomstring": "^1.2.3",
+"react": "18.2.0",
+"react-anchor-link-smooth-scroll": "^1.0.12",
+"react-dom": "18.2.0",
+"react-redux": "^8.0.5",
+"react-simple-chatbot": "^0.6.1",
+"redux": "^4.2.0",
+"redux-persist": "^6.0.0",
+"sharp": "^0.31.2",
+"stripe": "^11.1.0",
+"styled-components": "^5.3.6",
+"swr": "^1.3.0",
+"typescript": "4.9.3"
 
 - サーバー起動
 ```
