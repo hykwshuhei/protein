@@ -14,7 +14,6 @@ yarn
 - インストールするライブラリ
 ```
 "@hookform/error-message": "^2.0.1",
-"@reduxjs/toolkit": "^1.9.1",
 "@stripe/stripe-js": "^1.45.0",
 "@supabase/supabase-js": "^2.2.2",
 "@types/node": "18.11.9",
@@ -29,10 +28,7 @@ yarn
 "react": "18.2.0",
 "react-anchor-link-smooth-scroll": "^1.0.12",
 "react-dom": "18.2.0",
-"react-redux": "^8.0.5",
 "react-simple-chatbot": "^0.6.1",
-"redux": "^4.2.0",
-"redux-persist": "^6.0.0",
 "sharp": "^0.31.2",
 "stripe": "^11.1.0",
 "styled-components": "^5.3.6",
