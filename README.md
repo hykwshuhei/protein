@@ -50,8 +50,8 @@ yarn mock-api
 
 - テストログイン
 ```
-メールアドレス:test@test.com
-パスワード:protein
+メールアドレス:rakutein@@example.com
+パスワード:rakutein
 ```
 
 ## ダミー決済の入力情報について
